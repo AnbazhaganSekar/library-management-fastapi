@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from datetime import date
-
+from .models import Book
 
 def get_books(db: Session):
     return db.query(Book).all()
