@@ -4,7 +4,7 @@ A backend-driven web application for managing library inventory, borrowing workf
 
 ---
 
-## 📌 Overview
+## Overview
 
 This project demonstrates a **CRUD-based service architecture** with server-side rendering, focusing on:
 
@@ -190,7 +190,7 @@ uvicorn app.main:app --reload
 * Add Pydantic validation models
 * Containerize using Docker
 * CI/CD pipeline using GitHub Actions
-* Observability (logging, monitoring)
+
 
 ---
 
