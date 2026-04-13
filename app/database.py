@@ -1,43 +1,32 @@
+import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
+from dotenv import load_dotenv
 
-# ==============================
-# CONFIGURATION
-# ==============================
+load_dotenv()
 
-MYSQL_USER = "root"
-MYSQL_PASSWORD = "2442816%40anbU"   #change this
-MYSQL_HOST = "localhost"
-MYSQL_PORT = "3306"
-DB_NAME = "library_db"
+MYSQL_USER = os.getenv("MYSQL_USER")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+MYSQL_PORT = os.getenv("MYSQL_PORT", "3306")
+DB_NAME = os.getenv("DB_NAME", "library_db")
 
-# ==============================
-# STEP 1: CONNECT TO MYSQL SERVER (NO DB)
-# ==============================
-
+# Create DB if not exists
 server_engine = create_engine(
     f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}",
-    echo=True
+    echo=False
 )
-
-# ==============================
-# STEP 2: CREATE DATABASE IF NOT EXISTS
-# ==============================
 
 with server_engine.connect() as conn:
     conn.execute(text(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}"))
     conn.commit()
 
-# ==============================
-# STEP 3: CONNECT TO DATABASE
-# ==============================
-
+# Connect to DB
 DATABASE_URL = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{DB_NAME}"
 
 engine = create_engine(
     DATABASE_URL,
-    echo=True,
-    pool_pre_ping=True   # avoids stale connections
+    pool_pre_ping=True
 )
 
 SessionLocal = sessionmaker(
