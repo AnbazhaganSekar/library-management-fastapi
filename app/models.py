@@ -3,7 +3,7 @@ from .database import Base
 
 
 class Book(Base):
-    __tablename__ = "books"
+
 
     id = Column(Integer, primary_key=True, index=True)
     book_title = Column(String(255), nullable=False)
