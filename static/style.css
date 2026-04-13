@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 24px;
+    min-height: 100vh;
+    color: #222;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #1f2937;
+    font-size: 2.4rem;
+}
+
+h2 {
+    margin: 28px 0 12px;
+    color: #334155;
+    font-size: 1.5rem;
+}
+
+.add-book-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    background: rgba(255,255,255,0.85);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(15,23,42,0.08);
+}
+
+.add-book-form input,
+.borrow-form input,
+.return-form input {
+    padding: 12px 14px;
+    margin: 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    min-width: 180px;
+    flex: 1 1 180px;
+}
+
+.add-book-form button,
+.borrow-form button,
+.return-form button {
+    padding: 12px 18px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.add-book-form button:hover,
+.borrow-form button:hover,
+.return-form button:hover {
+    background-color: #1d4ed8;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+.card > div,
+.card form,
+.card a {
+    margin-top: 12px;
+}
+
+.card-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.card-header b {
+    font-size: 1.15rem;
+}
+
+.book-status,
+.book-available {
+    color: #475569;
+    display: inline-block;
+}
+
+.book-status {
+    font-weight: 600;
+}
+
+.borrow-form,
+.return-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.borrow-form input {
+    flex: 1 1 180px;
+}
+
+.return-form {
+    justify-content: flex-start;
+}
+
+.secondary {
+    background-color: #0ea5e9;
+}
+
+.secondary:hover {
+    background-color: #0284c7;
+}
+
+.delete-link {
+    display: inline-block;
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .add-book-form,
+    .borrow-form,
+    .return-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-book-form input,
+    .borrow-form input,
+    .return-form input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        padding: 14px;
+    }
+
+    .container {
+        padding: 0;
+    }
+}

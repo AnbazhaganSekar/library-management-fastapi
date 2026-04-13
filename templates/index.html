@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+<h1>Library Management System</h1>
+
+<h2>Add Book</h2>
+<form class="add-book-form" action="/add" method="post">
+    <input name="book_title" placeholder="Title" required>
+    <input name="author" placeholder="Author" required>
+    <input name="category" placeholder="Category" required>
+    <input name="isbn" placeholder="ISBN" required>
+    <input name="total_copies" type="number" placeholder="Total Copies" required>
+    <button>Add</button>
+</form>
+
+<h2>Book List</h2>
+
+{% for book in books %}
+<div class="card">
+    <div class="card-header">
+        <b>{{ book.book_title }}</b>
+        <span class="book-author">{{ book.author }}</span>
+    </div>
+    <div class="book-metadata">
+        <span class="book-status">Status: {{ book.status }}</span>
+        <span class="book-available">Available: {{ book.available_copies }}</span>
+    </div>
+
+    <form class="borrow-form" action="/borrow/{{ book.id }}" method="post">
+        <input name="user_name" placeholder="Name">
+        <input name="user_email" placeholder="Email">
+        <button>Borrow</button>
+    </form>
+
+    <form class="return-form" action="/return/{{ book.id }}" method="post">
+        <button class="secondary">Return</button>
+    </form>
+
+    <a class="delete-link" href="/delete/{{ book.id }}">Delete</a>
+</div>
+{% endfor %}
+
+</div>
+</body>
+</html>
